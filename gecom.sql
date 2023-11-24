@@ -1,0 +1,52 @@
+DROP DATABASE if EXISTS gecom;
+CREATE DATABASE gecom;
+USE gecom;
+CREATE TABLE caissier(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    prenom VARCHAR(255) NOT NULL,
+    poste VARCHAR(255) NOT NULL,
+    admin TINYINT(1) NOT NULL
+);
+CREATE TABLE client(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    prenom VARCHAR(255) NOT NULL,
+    adresse VARCHAR(255) NOT NULL,
+    ville VARCHAR(255) NOT NULL
+);
+CREATE TABLE detail_bl(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    article_id BIGINT UNSIGNED NOT NULL,
+    bl_id BIGINT UNSIGNED NOT NULL,
+    qte DOUBLE(8, 2) NOT NULL
+);
+CREATE TABLE article(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    designation VARCHAR(255) NOT NULL,
+    prix_ht DOUBLE(8, 2) NOT NULL,
+    tva DOUBLE(8, 2) NOT NULL,
+    stock DOUBLE(8, 2) NOT NULL,
+    famille_id BIGINT UNSIGNED NOT NULL
+);
+CREATE TABLE famille(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    famille VARCHAR(255) NOT NULL
+);
+CREATE TABLE BonLivraison(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    reglé TINYINT(1) NOT NULL,
+    client_id BIGINT UNSIGNED NULL,
+    caissier_id BIGINT UNSIGNED NOT NULL
+);
+ALTER TABLE
+    BonLivraison ADD CONSTRAINT bonlivraison_id_foreign FOREIGN KEY(id) REFERENCES client(id);
+ALTER TABLE
+    detail_bl ADD CONSTRAINT detail_bl_article_id_foreign FOREIGN KEY(article_id) REFERENCES article(id);
+ALTER TABLE
+    BonLivraison ADD CONSTRAINT bonlivraison_caissier_id_foreign FOREIGN KEY(caissier_id) REFERENCES caissier(id);
+ALTER TABLE
+    detail_bl ADD CONSTRAINT detail_bl_bl_id_foreign FOREIGN KEY(bl_id) REFERENCES BonLivraison(id);
+ALTER TABLE
+    article ADD CONSTRAINT article_famille_id_foreign FOREIGN KEY(famille_id) REFERENCES famille(id);
