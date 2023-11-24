@@ -1,0 +1,19 @@
+/* start layout */
+.app-container{
+    display: flex;
+}
+
+.app-container .side-bar{
+    width: 10vw;
+    border-right: 1px solid #707070;
+    height: 100vh;
+}
+.app-container .content{
+}
+/* end layout */
+
+/* start sidebar */
+.app-container .side-bar .logo{
+    width: 100%;
+}
+/* end sidebar */

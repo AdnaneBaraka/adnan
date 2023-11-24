@@ -1,17 +1,21 @@
-<!-- index.php -->
-<?php  
-require_once './components/header.php';
+<?php 
+
+$title = 'Dashboard';
+
+include 'header.php'; 
 
 ?>
-<section>
-<?php include './nav.php'; ?>
-<div class="container">
 
+<div class="app-container">
+    <?php 
+        include 'side-bar.php';
+    ?>
+    <div class="content container">
+    </div>
 </div>
 
-</section>
+<?php
 
-<?php 
-require_once './components/footer.php';
+include 'footer.php';
 
 ?>
