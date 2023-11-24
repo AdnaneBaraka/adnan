@@ -5,7 +5,7 @@ require_once './header.php';
 ?>
 <section>
 <?php include './nav.php'; ?>
-<div class="">
+<div class="container">
 
 </div>
 
