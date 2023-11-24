@@ -1,6 +1,6 @@
 <!-- index.php -->
 <?php  
-require_once './header.php';
+require_once './components/header.php';
 
 ?>
 <section>
@@ -12,6 +12,6 @@ require_once './header.php';
 </section>
 
 <?php 
-require_once './footer.php';
+require_once './components/footer.php';
 
 ?>
