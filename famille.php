@@ -5,7 +5,7 @@ $title = 'Famille';
 include 'header.php';
 include 'dbconnect.php';
 
-
+                             //////////////ajouter/////////////////
 if(isset($_POST['ajouter'])){
     $nouvelleFamille = $_POST['nouvelle_famille'];
 
@@ -23,6 +23,22 @@ if(isset($_POST['ajouter'])){
         echo "";
     }
 }
+                             //////////////delete/////////////////
+
+if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
+    $familleIdToDelete = $_GET['delete'];
+
+
+    $sqlDelete = "DELETE FROM famille WHERE id = $familleIdToDelete";
+    $resultDelete = $conn->query($sqlDelete);
+
+    if ($resultDelete) {
+        echo "";
+    } else {
+        echo "حدث خطأ أثناء حذف العائلة: " . $conn->error;
+    }
+}
+
 
 
 $sql = "SELECT * FROM famille";
@@ -34,7 +50,7 @@ $result = $conn->query($sql);
 
 <div class="app-container">
     <?php
-    include 'side-bar.php';
+        include 'side-bar.php';
     ?>
         <div class="row w-100 my-4">
             <div class="col-8 mx-auto">
@@ -62,9 +78,9 @@ $result = $conn->query($sql);
                             <tr>
                                 <th scope="row"><?php echo($row["id"]);?></th>
                                 <td><?php echo($row["famille"]); ?></td>
-                                <td>
+                                <td>                              
                                     <a class="btn btn-primary btn-sm " href="#edit-<?php   echo($row["id"]);?>" role="button"> Modifier </a>
-                                    <a class="btn btn-primary btn-sm " href="#delete-<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
+                                    <a class="btn btn-primary btn-sm" href="?delete=<?php echo $row['id']; ?>" role="button"> Supprimer </a> 
                                 </td>
                             </tr>
         
@@ -91,8 +107,8 @@ $result = $conn->query($sql);
                     <input type="text" name="nouvelle_famille" class="form-control" placeholder="FAMILLE" aria-label="FAMILLE">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="ajouter">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary" name="ajouter">Enregistrer</button>
                 </div>
             </div>
         </form>
