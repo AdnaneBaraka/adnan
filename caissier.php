@@ -20,10 +20,24 @@ if(isset($_POST['ajouter'])){
         if ($resultInsert) {
             // echo "Ajouté avec succès";
         } else {
-            echo "Une erreur s'est produite lors de l'ajout de la client : " . $conn->error;
+            echo "Une erreur s'est produite lors de l'ajout de la caissier : " . $conn->error;
         }
     } else {
         echo "";
+    }
+}
+ //////////////delete///////////
+ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
+    $caissierIdToDelete = $_GET['delete'];
+
+
+    $sqlDelete = "DELETE FROM caissier WHERE id = $caissierIdToDelete";
+    $resultDelete = $conn->query($sqlDelete);
+
+    if ($resultDelete) {
+        echo "";
+    } else {
+        echo "حدث خطأ أثناء حذف العائلة: " . $conn->error;
     }
 }
 
@@ -71,7 +85,7 @@ $result = $conn->query($sql);
                                 <td><?php echo($row["admin"]); ?></td>
                                 <td>
                                     <a class="btn btn-primary btn-sm " href="#edit-<?php   echo($row["id"]);?>" role="button"> Modifier </a>
-                                    <a class="btn btn-primary btn-sm " href="#delete-<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
+                                    <a class="btn btn-primary btn-sm " href="?delete=<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
                                 </td>
                             </tr>
         
@@ -91,7 +105,7 @@ $result = $conn->query($sql);
         <form method="post" action="">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter une famille</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter une caissier</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
