@@ -110,10 +110,10 @@ $result = $conn->query($sql);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                nom: <input type="text" name="nouvelle_nom" class="form-control" placeholder="nom" aria-label="nom">
-                prenom: <input type="text" name="nouvelle_prenom" class="form-control" placeholder="prenom" aria-label="prenom">
-                adresse: <input type="text" name="nouvelle_adresse" class="form-control" placeholder="adresse" aria-label="adresse">
-                ville: <input type="text" name="nouvelle_ville" class="form-control" placeholder="ville" aria-label="ville">
+                <Label>nom:</Label>  <input type="text" name="nouvelle_nom" class="form-control" placeholder="nom" aria-label="nom">
+                <label for="">prenom:</label>  <input type="text" name="nouvelle_prenom" class="form-control" placeholder="prenom" aria-label="prenom">
+                <label for="">adresse:</label>  <input type="text" name="nouvelle_adresse" class="form-control" placeholder="adresse" aria-label="adresse">
+                <label for="">ville:</label>  <input type="text" name="nouvelle_ville" class="form-control" placeholder="ville" aria-label="ville">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
