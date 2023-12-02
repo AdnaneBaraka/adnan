@@ -112,11 +112,11 @@ $result = $conn->query($sql);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                designation: <input type="text" name="designation" class="form-control" placeholder="designation" aria-label="designation">
-                prix_ht: <input type="text" name="prix_ht" class="form-control" placeholder="prix_ht" aria-label="prix_ht">
-                tva: <input type="text" name="tva" class="form-control" placeholder="tva" aria-label="tva">
-                stock: <input type="text" name="stock" class="form-control" placeholder="stock" aria-label="stock">
-                famille_id: <<select id="famille_id" name="famille_id">">
+                <label for="">designation:</label>  <input type="text" name="designation" class="form-control" placeholder="designation" aria-label="designation">
+                <label for="">prix_ht:</label> <input type="number" name="prix_ht" class="form-control" placeholder="prix_ht" aria-label="prix_ht">
+                <label for="">tva:</label> <input type="number" name="tva" class="form-control" placeholder="tva" aria-label="tva">
+                <label for="">stock:</label> <input type="number" name="stock" class="form-control" placeholder="stock" aria-label="stock">
+                <label for="">famille</label> <<select id="famille_id" name="famille_id">">
                                 <?php
                                 $sqlFamilles = "SELECT * FROM famille";
                                 $resultFamilles = $conn->query($sqlFamilles);
