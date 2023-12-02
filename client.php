@@ -5,6 +5,28 @@ $title = 'client';
 include 'header.php';
 include 'dbconnect.php';
 
+if(isset($_POST['modifier'])){
+    $nouvellenom = $_POST['nouvelle_nom'];
+    $nouvellprenom = $_POST['nouvelle_prenom'];
+    $nouvelleadresse = $_POST['nouvelle_adresse'];
+    $nouvelleville = $_POST['nouvelle_ville'];
+    $client = $_POST['client'];
+
+    // التأكد من أن القيمة غير فارغة قبل إضافتها إلى قاعدة البيانات
+    if (!empty($nouvellenom)) {
+        $sqlUpdate = "UPDATE client SET nom='$nouvellenom', prenom='$nouvellprenom', adresse='$nouvelleadresse', ville='$nouvelleville' WHERE id=$client";
+        $resultInsert = $conn->query($sqlUpdate);
+
+        if ($resultInsert) {
+            // echo "Ajouté avec succès";
+        } else {
+            echo "Une erreur s'est produite lors de l'ajout de la client : " . $conn->error;
+        }
+    } else {
+        echo "";
+    }
+}
+
 if(isset($_POST['ajouter'])){
     $nouvellenom = $_POST['nouvelle_nom'];
     $nouvellprenom = $_POST['nouvelle_prenom'];
@@ -55,9 +77,7 @@ $result = $conn->query($sql);
         <div class="row w-100 my-4">
             <div class="col-8 mx-auto">
                  <div class="btn-container">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Ajouter
-                    </button>
+                    <a href="./ajouter-client.php" class="btn btn-primary">Ajouter</a>
                 </div>
                 <table class="table border m-auto">
                     <thead>
@@ -85,7 +105,9 @@ $result = $conn->query($sql);
                             <td><?php echo($row["adresse"]); ?></td>
                             <td><?php echo($row["ville"]); ?></td>
                             <td>
-                                <a class="btn btn-primary btn-sm " href="#edit-<?php   echo($row["id"]);?>" role="button"> Modifier </a>
+                                <a class="btn btn-primary btn-sm edit-btn" href="./modifier-client.php?client=<?php echo $row['id']; ?>">
+                                    Modifier
+                                </a>
                                 <a class="btn btn-primary btn-sm" href="?delete=<?php echo $row['id']; ?>" role="button"> Supprimer </a> 
                             </td>
                         </tr>
@@ -100,6 +122,8 @@ $result = $conn->query($sql);
             </div>    
         </div>
 </div>
+
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -117,12 +141,38 @@ $result = $conn->query($sql);
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-primary" name="ajouter">Enregistrer</button>
+                    <button type="submit" id="enregistrer" class="btn btn-primary" name="ajouter">Enregistrer</button>
                 </div>
             </div>
         </form>
     </div>  
 </div>
+<!-- Add a JavaScript function to handle the Edit button click -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var editButtons = document.querySelectorAll('.edit-btn');
+        var editClientIdInput = document.getElementById('editClientId');
+
+        for(let index = 0; index < editButtons.length; index++) {
+            editButtons[index]
+        }
+
+        editButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var clientId = button.getAttribute('data-client-id');
+                editClientIdInput.value = clientId;
+
+                // Retrieve client information from the corresponding row and populate the modal form
+                var row = button.closest('tr');
+                document.querySelector('input[name="nouvelle_nom"]').value = row.cells[1].textContent;
+                document.querySelector('input[name="nouvelle_prenom"]').value = row.cells[2].textContent;
+                document.querySelector('input[name="nouvelle_adresse"]').value = row.cells[3].textContent;
+                document.querySelector('input[name="nouvelle_ville"]').value = row.cells[4].textContent;
+                document.getElementById('enregistrer').setAttribute('name','modifier')
+            });
+        });
+    });
+</script>
 <?php
 
 include 'footer.php';
