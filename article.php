@@ -55,9 +55,7 @@ $result = $conn->query($sql);
         <div class="row w-100 my-4">
             <div class="col-8 mx-auto">
                      <div class="btn-container">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Ajouter
-                        </button>
+                     <a href="./ajouter-article.php" class="btn btn-primary">Ajouter</a>
                     </div>
     
                 <table class="table border m-auto">
@@ -101,38 +99,6 @@ $result = $conn->query($sql);
                 </table>
             </div>    
         </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form method="post" action="">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter une article</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <label for="">designation:</label>  <input type="text" name="designation" class="form-control" placeholder="designation" aria-label="designation">
-                <label for="">prix_ht:</label> <input type="number" name="prix_ht" class="form-control" placeholder="prix_ht" aria-label="prix_ht">
-                <label for="">tva:</label> <input type="number" name="tva" class="form-control" placeholder="tva" aria-label="tva">
-                <label for="">stock:</label> <input type="number" name="stock" class="form-control" placeholder="stock" aria-label="stock">
-                <label for="">famille</label> <<select id="famille_id" name="famille_id">">
-                                <?php
-                                $sqlFamilles = "SELECT * FROM famille";
-                                $resultFamilles = $conn->query($sqlFamilles);
-                                while ($rowFamille = $resultFamilles->fetch_assoc()) {
-                                    echo "<option value='" . $rowFamille['id'] . "'>" . $rowFamille['famille'] . "</option>";
-                                }
-                                ?>
-                            </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-primary" name="ajouter">Enregistrer</button>
-                </div>
-            </div>
-        </form>
-    </div>  
 </div>
 <?php
 
