@@ -54,9 +54,7 @@ $result = $conn->query($sql);
         <div class="row w-100 my-4">
             <div class="col-8 mx-auto">
                 <div class="btn-container">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Ajouter
-                    </button>
+                <a href="./ajouter-caissier.php" class="btn btn-primary">Ajouter</a>
                 </div>
                 <table class="table border m-auto">
                     <thead>
@@ -100,7 +98,7 @@ $result = $conn->query($sql);
         </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <form method="post" action="">
             <div class="modal-content">
@@ -121,7 +119,7 @@ $result = $conn->query($sql);
             </div>
         </form>
     </div>  
-</div>
+</div> -->
 <?php
 
 include 'footer.php';

@@ -10,8 +10,9 @@ include 'dbconnect.php';
     <?php
         include 'side-bar.php';
     ?>
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter une client</h1>
+        
         <form method="post" action="./client.php">
+        <h1 class="" id="">Ajouter une client</h1>
             <Label>nom:</Label>  <input type="text" name="nouvelle_nom" class="form-control" placeholder="nom" aria-label="nom">
             <label for="">prenom:</label>  <input type="text" name="nouvelle_prenom" class="form-control" placeholder="prenom" aria-label="prenom">
             <label for="">adresse:</label>  <input type="text" name="nouvelle_adresse" class="form-control" placeholder="adresse" aria-label="adresse">

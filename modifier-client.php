@@ -13,9 +13,9 @@ include 'dbconnect.php';
     if (isset($_GET['client'])) {
         $clientsql = "SELECT * FROM client WHERE id = " . $_GET['client'];
         $result = $conn->query($clientsql);
-    ?>
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier une client</h1>
+    ?>     
         <form method="post" action="./client.php">
+        <h1 class="" id="">Modifier une client</h1>
             <?php 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {

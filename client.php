@@ -26,7 +26,7 @@ if(isset($_POST['modifier'])){
         echo "";
     }
 }
-
+                             //////////////ajouter/////////////////
 if(isset($_POST['ajouter'])){
     $nouvellenom = $_POST['nouvelle_nom'];
     $nouvellprenom = $_POST['nouvelle_prenom'];
@@ -123,9 +123,7 @@ $result = $conn->query($sql);
         </div>
 </div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <form method="post" action="">
             <div class="modal-content">
@@ -146,9 +144,9 @@ $result = $conn->query($sql);
             </div>
         </form>
     </div>  
-</div>
+</div> -->
 <!-- Add a JavaScript function to handle the Edit button click -->
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         var editButtons = document.querySelectorAll('.edit-btn');
         var editClientIdInput = document.getElementById('editClientId');
@@ -172,7 +170,7 @@ $result = $conn->query($sql);
             });
         });
     });
-</script>
+</script> -->
 <?php
 
 include 'footer.php';
