@@ -1,10 +1,31 @@
 <?php
 
-$title = 'caissier';
+$title = '';
 
 include 'header.php';
 include 'dbconnect.php';
 
+if(isset($_POST['modifier'])){
+    $nouvellenom = $_POST['nouvelle_nom'];
+    $nouvellprenom = $_POST['nouvelle_prenom'];
+    $nouvelleaposte = $_POST['nouvelle_poste'];
+    $nouvelleadmin = $_POST['nouvelle_admin'];
+    $caissier = $_POST['caissier'];
+    // التأكد من أن القيمة غير فارغة قبل إضافتها إلى قاعدة البيانات
+    if (!empty($nouvellenom)) {
+        $sqlUpdate = "UPDATE caissier SET nom ='$nouvellenom',prenom='$nouvellprenom',poste ='$nouvelleaposte ', admin ='$nouvelleadmin' WHERE id=$caissier";
+        $resultUpdate = $conn->query($sqlUpdate);
+
+        if ($resultUpdate) {
+            // echo "modifieravec succès";
+        } else {
+            echo "Une erreur s'est produite lors de modifier de la caissier : " . $conn->error;
+        }
+    } else {
+        echo "";
+    }
+}
+                             //////////////ajouter/////////////////
 if(isset($_POST['ajouter'])){
     $nouvellenom = $_POST['nouvelle_nom'];
     $nouvellprenom = $_POST['nouvelle_prenom'];
@@ -82,7 +103,7 @@ $result = $conn->query($sql);
                                 <td><?php echo($row["poste"]); ?></td>
                                 <td><?php echo($row["admin"]); ?></td>
                                 <td>
-                                    <a class="btn btn-primary btn-sm " href="#edit-<?php   echo($row["id"]);?>" role="button"> Modifier </a>
+                                    <a class="btn btn-primary btn-sm edit-btn" href="./modifier-caissier.php?caissier=<?php   echo$row["id"];?>" role="button"> Modifier </a>
                                     <a class="btn btn-primary btn-sm " href="?delete=<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
                                 </td>
                             </tr>
