@@ -18,9 +18,9 @@ if(isset($_POST['modifier'])){
         $resultInsert = $conn->query($sqlUpdate);
 
         if ($resultInsert) {
-            // echo "Ajouté avec succès";
+            // echo "modifier avec succès";
         } else {
-            echo "Une erreur s'est produite lors de l'ajout de la client : " . $conn->error;
+            echo "Une erreur s'est produite lors de modifier de la client : " . $conn->error;
         }
     } else {
         echo "";

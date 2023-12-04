@@ -5,6 +5,23 @@ $title = 'Famille';
 include 'header.php';
 include 'dbconnect.php';
 
+if(isset($_POST['modifier'])){
+    $nouvelleFamille = $_POST['nouvelle_famille'];
+    $Famille = $_POST['Famille'];
+    // التأكد من أن القيمة غير فارغة قبل إضافتها إلى قاعدة البيانات
+    if (!empty($nouvelleFamille)) {
+        $sqlUPDATE = "UPDATE famille SET famille='$nouvelleFamille 'WHERE id=$Famille"; 
+        $resultUPDATE = $conn->query($sqlUPDATE);
+
+        if ($resultUPDATE) {
+            // echo "modifier avec succès";
+        } else {
+            echo "Une erreur s'est produite lors de modifier de la famille : " . $conn->error;
+        }
+    } else {
+        echo "";
+    }
+}
                              //////////////ajouter/////////////////
 if(isset($_POST['ajouter'])){
     $nouvelleFamille = $_POST['nouvelle_famille'];
@@ -78,7 +95,7 @@ $result = $conn->query($sql);
                                 <th scope="row"><?php echo($row["id"]);?></th>
                                 <td><?php echo($row["famille"]); ?></td>
                                 <td>                              
-                                    <a class="btn btn-primary btn-sm " href="#edit-<?php   echo($row["id"]);?>" role="button"> Modifier </a>
+                                    <a class="btn btn-primary btn-sm edit-btn" href="./modifier-famille.php?famille=<?php   echo($row["id"]);?>" role="button"> Modifier </a>
                                     <a class="btn btn-primary btn-sm" href="?delete=<?php echo $row['id']; ?>" role="button"> Supprimer </a> 
                                 </td>
                             </tr>
