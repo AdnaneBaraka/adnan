@@ -65,7 +65,9 @@ if(isset($_POST['ajouter'])){
         echo "حدث خطأ أثناء حذف العائلة: " . $conn->error;
     }
 }
-$sql = "SELECT * FROM article";
+$sql = "SELECT article.*, famille.famille 
+        FROM article
+        INNER JOIN famille ON article.famille_id = famille.id";
 
 $result = $conn->query($sql);
 
@@ -106,7 +108,7 @@ $result = $conn->query($sql);
                                 <td><?php echo($row["prix_ht"]); ?></td>
                                 <td><?php echo($row["tva"]); ?></td>
                                 <td><?php echo($row["stock"]); ?></td>
-                                <td><?php echo($row["famille_id"]); ?></td>
+                                <td><?php echo($row["famille"]); ?></td>
                                 <td>
                                 <a class="btn btn-primary btn-sm edit-btn" href="./modifier-article.php?article=<?php echo $row['id']; ?>">
                                     Modifier

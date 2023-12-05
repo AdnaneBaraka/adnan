@@ -84,7 +84,7 @@ $result = $conn->query($sql);
                             <th scope="col">Nom</th>
                             <th scope="col">Prenom</th>
                             <th scope="col">poste</th>
-                            <th scope="col">admin</th>
+                            <th scope="col">Role</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -101,7 +101,7 @@ $result = $conn->query($sql);
                                 <td><?php echo($row["nom"]); ?></td>
                                 <td><?php echo($row["prenom"]); ?></td>
                                 <td><?php echo($row["poste"]); ?></td>
-                                <td><?php echo($row["admin"]); ?></td>
+                                <td><?php echo(($row["admin"] == 1)?'Admin':'User'); ?></td>
                                 <td>
                                     <a class="btn btn-primary btn-sm edit-btn" href="./modifier-caissier.php?caissier=<?php   echo$row["id"];?>" role="button"> Modifier </a>
                                     <a class="btn btn-primary btn-sm " href="?delete=<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
