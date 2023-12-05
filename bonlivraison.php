@@ -18,7 +18,11 @@ include 'dbconnect.php';
     }
 }
 
-$sql = "SELECT * FROM bonlivraison";
+$sql = "SELECT bonlivraison.*, client.nom AS client_nom, caissier.nom AS caissier_nom
+        FROM bonlivraison
+        LEFT JOIN client ON bonlivraison.client_id = client.id
+        LEFT JOIN caissier ON bonlivraison.caissier_id = caissier.id";
+
 
 $result = $conn->query($sql);
 ?>
@@ -54,8 +58,8 @@ $result = $conn->query($sql);
                                 <th scope="row"><?php echo($row["id"]);?></th>
                                 <td><?php echo($row["date"]); ?></td>
                                 <td><?php echo($row["reglé"]); ?></td>
-                                <td><?php echo($row["client_id"]); ?></td>
-                                <td><?php echo($row["caissier_id"]); ?></td>
+                                <td><?php echo($row["client_nom"]); ?></td>
+                                <td><?php echo($row["caissier_nom"]); ?></td>
                                 <td>
                                     <a class="btn btn-primary btn-sm edit-btn" href="./modifier-caissier.php?caissier=<?php   echo$row["id"];?>" role="button"> Modifier </a>
                                     <a class="btn btn-primary btn-sm " href="?delete=<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
