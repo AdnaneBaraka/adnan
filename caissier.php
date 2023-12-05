@@ -1,6 +1,6 @@
 <?php
 
-$title = '';
+$title = 'caissier';
 
 include 'header.php';
 include 'dbconnect.php';
