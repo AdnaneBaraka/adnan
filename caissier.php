@@ -1,6 +1,6 @@
 <?php
 
-$title = 'caissier';
+$title = ' ncaissier';
 
 include 'header.php';
 include 'dbconnect.php';
@@ -10,10 +10,10 @@ if(isset($_POST['modifier'])){
     $nouvellprenom = $_POST['nouvelle_prenom'];
     $nouvelleaposte = $_POST['nouvelle_poste'];
     $nouvelleadmin = $_POST['nouvelle_admin'];
-    $caissier = $_POST['caissier'];
+    $caissierId = $_POST['caissier'];
     // التأكد من أن القيمة غير فارغة قبل إضافتها إلى قاعدة البيانات
     if (!empty($nouvellenom)) {
-        $sqlUpdate = "UPDATE caissier SET nom ='$nouvellenom',prenom='$nouvellprenom',poste ='$nouvelleaposte ', admin ='$nouvelleadmin' WHERE id=$caissier";
+        $sqlUpdate = "UPDATE caissier SET nom ='$nouvellenom',prenom='$nouvellprenom',poste ='$nouvelleaposte ', admin ='$nouvelleadmin' WHERE id=$caissierId";
         $resultUpdate = $conn->query($sqlUpdate);
 
         if ($resultUpdate) {

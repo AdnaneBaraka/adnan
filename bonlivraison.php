@@ -29,7 +29,7 @@ $result = $conn->query($sql);
         <div class="row w-100 my-4">
             <div class="col-8 mx-auto">
                 <div class="btn-container">
-                <a href="./ajouter-caissier.php" class="btn btn-primary">Ajouter</a>
+                <a href="./ajouter-bonlivraison.php" class="btn btn-primary">Ajouter</a>
                 </div>
                 <table class="table border m-auto">
                     <thead>

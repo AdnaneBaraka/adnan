@@ -10,7 +10,8 @@ include 'dbconnect.php';
     <?php
     include 'side-bar.php';
     if (isset($_GET['caissier'])) {
-        $caissiersql = "SELECT * FROM caissier WHERE id = " . $_GET['caissier'];
+        $caissierId = $_GET['caissier'];
+        $caissiersql = "SELECT * FROM caissier WHERE id = $caissierId ";
         $result = $conn->query($caissiersql);
     ?>     
         <form method="post" action="./caissier.php">
