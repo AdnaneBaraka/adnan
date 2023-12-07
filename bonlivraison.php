@@ -2,7 +2,27 @@
 $title = 'bonlivraison';
 include 'header.php';
 include 'dbconnect.php';
+///////////////ajouter///////////////
+if(isset($_POST['ajouter'])){
+    $date =  $_POST ['date'];
+    $nouvellcaissier = $_POST ['caissier_nom'];
+    $nouvellclient = $_POST ['client_nom'];
+    $Réglé = $_POST ['reglé'];
 
+
+    if(!empty($date)&& isset($nouvellcaissier)&& isset($nouvellclient )&& isset($Réglé )){
+        $sqlInsert = "INSERT INTO BonLivraison(date,caissier_id,client_id,reglé) 
+        VALUES ('$date','$nouvellcaissier','$nouvellclient','$Réglé')";
+        $resultInsert = $conn->query($sqlInsert);
+        if ($resultInsert) {
+                 ///
+        }else{
+            echo "Une erreur de l'ajout de la BonLivraison : " . $conn->error;
+        }
+    }else{
+            echo "";  
+        }
+}
  //////////////delete///////////
  if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     $bonlivraisonToDelete = $_GET['delete'];
@@ -57,7 +77,7 @@ $result = $conn->query($sql);
                             <tr>
                                 <th scope="row"><?php echo($row["id"]);?></th>
                                 <td><?php echo($row["date"]); ?></td>
-                                <td><?php echo($row["reglé"]); ?></td>
+                                <td><?php echo(($row["reglé"] == 1)?'Réglé':'Non Réglé'); ?></td>
                                 <td><?php echo($row["client_nom"]); ?></td>
                                 <td><?php echo($row["caissier_nom"]); ?></td>
                                 <td>
