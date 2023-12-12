@@ -47,7 +47,16 @@ include 'dbconnect.php';
             <div class="row w-100 my-4">
             <div class="col-8 mx-auto">
                      <div class="btn-container">
-                    <input type="text">
+                     <label for="">Article:</label> 
+                        <select id="article_id" name="designation">"
+                            <?php
+                            $sqlarticle = "SELECT * FROM article";
+                            $resultarticle = $conn->query($sqlarticle);
+                            while ($rowarticle = $resultarticle->fetch_assoc()) {
+                                echo "<option value='" . $rowarticle['id'] . "'>" . $rowarticle['designation'] . "</option>";
+                            }
+                            ?>
+                        </select>
                     
                      <button>ajouter</button>
                     </div>
@@ -75,7 +84,7 @@ include 'dbconnect.php';
                                 <th scope="row"><?php echo($row["id"]);?></th>
                                 <td><?php echo($row["designation"]); ?></td>
                                 <td><?php echo($row["prix"]); ?></td>
-                                <td><?php echo($row["qte"]); ?></td>
+                                <td> <input type="number" name="Qte" id="Qte">; </td>
                                 <td><?php echo($row["total"]); ?></td>
                                 <td>
                                     <a class="btn btn-primary btn-sm " href="?delete=<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
