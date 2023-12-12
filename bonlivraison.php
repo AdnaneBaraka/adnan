@@ -81,8 +81,9 @@ $result = $conn->query($sql);
                                 <td><?php echo($row["client_nom"]); ?></td>
                                 <td><?php echo($row["caissier_nom"]); ?></td>
                                 <td>
-                                    <a class="btn btn-primary btn-sm edit-btn" href="./modifier-caissier.php?caissier=<?php   echo$row["id"];?>" role="button"> Modifier </a>
+                                    <a class="btn btn-primary btn-sm edit-btn" href="./modifier-bonlivraison.php?bonlivraison=<?php   echo$row["id"];?>" role="button"> Modifier </a>
                                     <a class="btn btn-primary btn-sm " href="?delete=<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
+                                    <a class="btn btn-primary btn-sm" href="./Détail bon de livraison .php" >Détail</a>
                                 </td>
                             </tr>
                                     
