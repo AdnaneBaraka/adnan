@@ -2,6 +2,29 @@
 $title = 'bonlivraison';
 include 'header.php';
 include 'dbconnect.php';
+if(isset($_POST['modifier'])){
+    $date =  $_POST ['date'];
+    $nouvellcaissier = $_POST ['caissier_nom'];
+    $nouvellclient = $_POST ['client_nom'];
+    $Réglé = $_POST ['reglé'];
+    $articleId = $_POST['bonlivraison'];
+
+    // التأكد من أن القيمة غير فارغة قبل إضافتها إلى قاعدة البيانات
+    if (!empty($nouvelledesignation)) {
+        $sqlUpdate = "UPDATE bonlivraison SET date='$date', caissier_nom=$nouvellcaissier, client_nom='$nouvellclient', reglé ='$Réglé ',  WHERE id=$bonlivraisonId";
+
+        $resultUpdate = $conn->query($sqlUpdate);
+
+        if ($resultUpdate) {
+            // echo "Ajouté avec succès";
+        } else {
+            echo "Une erreur s'est produite lors de modifier de la bonlivraison : " . $conn->error;
+        }
+    } else {
+        echo "";
+    }
+}
+
 ///////////////ajouter///////////////
 if(isset($_POST['ajouter'])){
     $date =  $_POST ['date'];
