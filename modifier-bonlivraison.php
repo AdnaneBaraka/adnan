@@ -42,6 +42,7 @@ include 'dbconnect.php';
                                 echo "<option value='" . $rowclient['id'] . "'$selected>" . $rowclient['prenom'] . "</option>";
                             }
                             ?>
+                </select><br>
                 <label for="reglé">Réglé:</label>
                 <select name="reglé" class="form-select" aria-label="Default select example" required>
                     <option value="1" <?php echo ($row['reglé'] == 1) ? 'selected' : ''; ?>>Réglé</option>
