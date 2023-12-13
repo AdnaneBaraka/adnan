@@ -25,7 +25,7 @@ if(isset($_POST['modifier'])){
     }
 }
 
-///////////////ajouter///////////////
+
 if(isset($_POST['ajouter'])){
     $date =  $_POST ['date'];
     $nouvellcaissier = $_POST ['caissier_nom'];
@@ -106,7 +106,7 @@ $result = $conn->query($sql);
                                 <td>
                                     <a class="btn btn-primary btn-sm edit-btn" href="./modifier-bonlivraison.php?bonlivraison=<?php   echo$row["id"];?>" role="button"> Modifier </a>
                                     <a class="btn btn-primary btn-sm " href="?delete=<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
-                                    <a class="btn btn-primary btn-sm" href="./Détail bon de livraison .php" >Détail</a>
+                                    <a class="btn btn-primary btn-sm" href="./bon_de_livraison_details.php?bonlivraison=<?php   echo$row["id"];?>" >Détail</a>
                                 </td>
                             </tr>
                                     
@@ -120,3 +120,8 @@ $result = $conn->query($sql);
             </div>  
         </div>
 </div>
+<?php
+
+include 'footer.php';
+
+?>

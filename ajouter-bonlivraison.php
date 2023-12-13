@@ -5,6 +5,7 @@ $title = 'bonlivraison';
 include 'header.php';
 include 'dbconnect.php';
 
+
 ?>
 <div class="app-container">
     <?php
@@ -44,62 +45,7 @@ include 'dbconnect.php';
 
 
 
-            <div class="row w-100 my-4">
-            <div class="col-8 mx-auto">
-                     <div class="btn-container">
-                     <label for="">Article:</label> 
-                        <select id="article_id" name="designation">"
-                            <?php
-                            $sqlarticle = "SELECT * FROM article";
-                            $resultarticle = $conn->query($sqlarticle);
-                            while ($rowarticle = $resultarticle->fetch_assoc()) {
-                                echo "<option value='" . $rowarticle['id'] . "'>" . $rowarticle['designation'] . "</option>";
-                            }
-                            ?>
-                        </select>
-                    
-                     <button>ajouter</button>
-                    </div>
-    
-                <table class="table border m-auto">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Designation</th>
-                            <th scope="col">prix</th>
-                            <th scope="col">Qte</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        
-                        //
-                            if ($result->num_rows > 0) {
-        
-                            while ($row = $result->fetch_assoc()) {
-                        ?>
-                            <tr>
-                                <th scope="row"><?php echo($row["id"]);?></th>
-                                <td><?php echo($row["designation"]); ?></td>
-                                <td><?php echo($row["prix"]); ?></td>
-                                <td> <input type="number" name="Qte" id="Qte">; </td>
-                                <td><?php echo($row["total"]); ?></td>
-                                <td>
-                                    <a class="btn btn-primary btn-sm " href="?delete=<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
-                                </td>
-                            </tr>
-        
-                        <?php
-                            }
-                        }
-                        ?>
-        
-                    </tbody>
-                </table>
-            </div>    
-        </div>
+            
 
 </div>
 <?php
