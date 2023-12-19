@@ -12,7 +12,7 @@ if(isset($_POST['ajouter-details'])){
 
     if(isset($bonlivraison_Id)&& isset($articleId )&& isset($qte)){
         $sqlInsert = "INSERT INTO detail_bl(article_id,bl_id,qte) 
-        VALUES ('$bonlivraison_Id','$articleId','$qte')";
+        VALUES ('$articleId','$bonlivraison_Id','$qte')";
         $resultInsert = $conn->query($sqlInsert);
         if ($resultInsert) {
                  ///
@@ -81,8 +81,8 @@ if(isset($_POST['ajouter-details'])){
                             <tr>
                                 <th scope="row"><?php echo($row["id"]);?></th>
                                 <td><?php echo($row["designation"]); ?></td>
-                                <td><?php echo($row["prix_ht"]); ?></td>
-                                <td> <input type="number" name="Qte" id="Qte">; </td>
+                                <td><?php echo(($row["prix_ht"] + $row["tva"])); ?></td>
+                                <td> <input type="number" value="<?php echo $row["qte"]?>" name="Qte" id="Qte"> </td>
                                 <td><?php echo (($row["prix_ht"] + $row["tva"]) * $row["qte"]); ?></td>
                                 <td>
                                     <a class="btn btn-primary btn-sm " href="?delete=<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
