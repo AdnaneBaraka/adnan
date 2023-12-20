@@ -106,7 +106,8 @@ $result = $conn->query($sql);
                                 <td>
                                     <a class="btn btn-primary btn-sm edit-btn" href="./modifier-bonlivraison.php?bonlivraison=<?php   echo$row["id"];?>" role="button"> Modifier </a>
                                     <a class="btn btn-primary btn-sm " href="?delete=<?php   echo($row["id"]);?>" role="button"> Supprimer </a>
-                                    <a class="btn btn-primary btn-sm" href="./bon_de_livraison_details.php?bonlivraison=<?php   echo$row["id"];?>" >Détail</a>
+                                    <a class="btn btn-primary btn-sm" href="./bon_de_livraison_details.php?bonlivraison=<?php   echo$row["id"];?>" >Ajouter Détail</a>
+                                    <a  class="btn btn-primary btn-sm" href="facture.php?id= <?php  echo $row["id"];?>" >Détail</a>
                                 </td>
                             </tr>
                                     
