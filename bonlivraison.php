@@ -38,7 +38,8 @@ if(isset($_POST['ajouter'])){
         VALUES ('$date','$nouvellcaissier','$nouvellclient','$Réglé')";
         $resultInsert = $conn->query($sqlInsert);
         if ($resultInsert) {
-                 ///
+            header("Location: bonLivraison.php");
+            exit();
         }else{
             echo "Une erreur de l'ajout de la BonLivraison : " . $conn->error;
         }

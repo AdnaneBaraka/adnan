@@ -42,7 +42,8 @@ if(isset($_POST['ajouter'])){
         $resultInsert = $conn->query($sqlInsert);
 
         if ($resultInsert) {
-            // echo "Ajouté avec succès";
+            header("Location: article.php");
+            exit();
         } else {
             echo "Une erreur s'est produite lors de l'ajout de la client : " . $conn->error;
         }
