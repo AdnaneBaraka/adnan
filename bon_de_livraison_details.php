@@ -17,7 +17,7 @@ if(isset($_POST['ajouter-details'])){
         $resultInsert = $conn->query($sqlInsert);
     }
      
-    header("Location: http://localhost/adnan/bon_de_livraison_details.php?bonlivraison=$bonlivraisonId");     
+    header("Location: ".$_SERVER["PHP_SELF"]."?bonlivraison=$bonlivraisonId");     
 
 }
 //////////////delete///////////
@@ -28,13 +28,6 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     $sqlDelete = "DELETE FROM detail_bl WHERE id = $detail_bldToDelete";
     $resultDelete = $conn->query($sqlDelete);
 
-    if ($resultDelete) {
-        echo "ggggggggggg";
-    } else {
-        echo "حدث خطأ أثناء حذف العائلة: " . $conn->error;
-    }
-    header("Location: bon_de_livraison_details.php");
-    exit();
 }
 
 ?>
@@ -100,7 +93,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
                                 <td><?php  $rowTotal = ($row["prix_ht"] + $row["tva"]) * $row["qte"];
     $totalSum += $rowTotal;  echo (($row["prix_ht"] + $row["tva"]) * $row["qte"]); ?></td>
                                 <td>
-                                <button class="btn btn-danger"><a href="suprimer.php?delete=<?php echo $row['id']; ?>&delete1=<?php echo $bonlivraisonId; ?>">Supprimer</a></button>
+                                <button class="btn btn-danger"><a href="<?php echo $_SERVER["PHP_SELF"] . "?bonlivraison=". $bonlivraisonId . "&delete=" . $row["id"] ?>">Supprimer</a></button>
 
 
                                 </td>
